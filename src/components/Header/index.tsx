@@ -3,7 +3,10 @@ import styles from './styles.module.scss';
 export function Header() {
   return (
     <header className={styles.containerHeader}>
-      <img src="#" alt="logo-book"/>
+      <img 
+        src='/images/book.png'
+        width='80'
+      />
       
       <nav className={styles.contentNav}>
         <a href="#" className={styles.active}>Home</a>

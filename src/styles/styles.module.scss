@@ -1,0 +1,95 @@
+.container {
+  width: 100%;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70vh;
+    width: 98vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('/images/books-background.png');
+    z-index: -1;
+    filter: blur(1px);
+  }
+
+  .contentSearch {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    z-index: 200;
+
+    .subTitle {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray-200);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--gray-600);
+      margin-bottom: 32px;
+
+      span {
+        color: var(--salmon-800);
+        font-weight: 600;
+        font-style: italic;
+      }
+    }
+    .contentIniput {
+      width: 100%;
+      max-width: 500px;
+      height: 60px;
+      background: #ffffff;
+      border-radius: 14px 14px 0 0;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+
+      input {
+        background: transparent;
+        border: 0;
+        height: 100%;
+        flex: 1;
+        font-style: 14px;
+        color: var(--gray-600);
+        outline: 0;
+
+        &::placeholder {
+          color: var(--gray-200);
+          font-style: 14px;
+        }
+      }
+      > svg {
+        cursor: pointer;
+      }
+      .boxListResult {
+        height: 250px;
+        max-height: fit-content;
+        overflow-y: scroll;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-radius: 0 0 14px 14px;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+}

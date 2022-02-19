@@ -1,0 +1,15 @@
+.resultItem {
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: .1s;
+
+  &:hover {
+    filter: brightness(.9);
+  }
+
+  span {
+    margin-left: 8px;
+  }
+}
