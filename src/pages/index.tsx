@@ -1,8 +1,10 @@
-import { useCallback, useState } from 'react';
-import { FiSearch, FiBook } from 'react-icons/fi';
+import { useState } from 'react';
+import { FiSearch } from 'react-icons/fi';
 import { ResultItem } from '../components/ResultItem';
 import { api } from '../services/api';
 import styles from '../styles/styles.module.scss';
+import Link from 'next/link';
+import { CardProduct } from '../components/CardProduct';
 
 export default function Home() {
   const [dataBook, setDataBook] = useState([]);
@@ -19,14 +21,14 @@ export default function Home() {
       return;
     } 
 
-    const response = await api.get(`volumes?q=${value}`);
+    const response = await api.get(`volumes?q=${value}&maxResults=40`);
     
     const { items } = response.data;
 
     setDataBook(items);
    
   }
-  console.log(dataBook)
+
   return (
     <main className={styles.container}>
       <section className={styles.contentSearch}>
@@ -39,14 +41,21 @@ export default function Home() {
             placeholder="Pesquise o nome do livro" 
           />
           <FiSearch size={20} />
+        </div>
+
+        <div className={styles.boxListResult}>
 
           {!!dataBook?.length && (
-            <div className={styles.boxListResult}>
-              {dataBook.map(item => (
-                <ResultItem key={item.id} title={item.volumeInfo.title}/>
-              ))}
-            </div>
-          )}
+              <div className={styles.boxListResult}>
+                {dataBook.map(item => (
+                  <Link href={`/product/${item.id}`} key={item.id}>
+                    <a>
+                      <CardProduct product={item}/>
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            )}
         </div>
       </section>
     </main>

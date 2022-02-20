@@ -1,0 +1,45 @@
+.contentInfoProduct {
+  width: 100%;
+
+  .contentTitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    > h1 {
+      font-size: 18px;
+      color: var(--gray-800);
+    }
+    .wishList {
+      cursor: pointer;
+    }
+  }
+  .contentSeller {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+
+    > p {
+      font-size: 12px;
+      margin-right: 8px;
+
+      span {
+        font-weight: bold;
+        color: var(--salmon-800);
+      }
+    }
+  }
+  .contentInfoPrice {
+    margin: 40px 0 16px;
+
+    span {
+      font-size: 24px;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+  }
+}

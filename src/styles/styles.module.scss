@@ -15,7 +15,7 @@
     background-size: contain;
     background-image: url('/images/books-background.png');
     z-index: -1;
-    filter: blur(1px);
+    filter: blur(2px);
   }
 
   .contentSearch {
@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 32px;
     z-index: 200;
 
     .subTitle {
@@ -52,10 +52,10 @@
       max-width: 500px;
       height: 60px;
       background: #ffffff;
-      border-radius: 14px 14px 0 0;
+      border-radius: 40px;
       display: flex;
       align-items: center;
-      padding: 0 16px;
+      padding: 0 24px;
       position: relative;
 
       input {
@@ -75,21 +75,13 @@
       > svg {
         cursor: pointer;
       }
-      .boxListResult {
-        height: 250px;
-        max-height: fit-content;
-        overflow-y: scroll;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: #ffffff;
-        border-radius: 0 0 14px 14px;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
+    }
+    .boxListResult {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
     }
   }
 }

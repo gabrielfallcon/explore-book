@@ -1,16 +1,23 @@
+import Link from 'next/link';
 import styles from './styles.module.scss';
 
 export function Header() {
   return (
     <header className={styles.containerHeader}>
-      <img 
-        src='/images/book.png'
-        width='80'
-      />
+      <Link href='/'>
+        <a>
+          <img 
+            src='/images/book.png'
+            width='80'
+          />
+        </a>
+      </Link>
       
       <nav className={styles.contentNav}>
         <a href="#" className={styles.active}>Home</a>
-        <a href="#">My Favorites</a>
+        <Link href="/wishlist">
+          <a>My Favorites</a>
+        </Link>
         <a href="#">All books</a>
       </nav>
     </header>
