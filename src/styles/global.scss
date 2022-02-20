@@ -35,6 +35,11 @@ button {
 body {
   background: var(--salmon-100);
 }
+main {
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
 section {
   width: 100%;
   max-width: 1200px;

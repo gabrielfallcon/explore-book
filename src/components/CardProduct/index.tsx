@@ -21,13 +21,15 @@ export const CardProduct = ({ product }: CardProductProps) => {
           />
         )}
       </div>
-      <h1 className={styles.titleCard}>
-        {product?.volumeInfo?.title}
-      </h1>
-
-      <p className={styles.descriptionCard}>
-        Editora: <span>{product?.volumeInfo?.publisher}</span>
-      </p>
+      {product?.volumeInfo?.title ? (
+        <h1 className={styles.titleCard}>
+          {product?.volumeInfo?.title}
+        </h1>
+      ) : (
+        <h1 className={styles.titleCard}>
+          Título indiponível..
+        </h1>
+      )}
     </div>
   )
 }

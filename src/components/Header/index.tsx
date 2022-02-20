@@ -14,11 +14,12 @@ export function Header() {
       </Link>
       
       <nav className={styles.contentNav}>
-        <a href="#" className={styles.active}>Home</a>
-        <Link href="/wishlist">
-          <a>My Favorites</a>
+        <Link href="/">
+          <a>Início</a>
         </Link>
-        <a href="#">All books</a>
+        <Link href="/wishlist">
+          <a>Meus Favoritos</a>
+        </Link>
       </nav>
     </header>
   )

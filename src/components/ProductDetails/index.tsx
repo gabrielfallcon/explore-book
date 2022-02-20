@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import styles from './styles.module.scss';
 
 interface ProductDetailsProps {
@@ -5,15 +7,40 @@ interface ProductDetailsProps {
 }
 
 export const ProductDetails = ({ product }: ProductDetailsProps) => {
+  const [isShowText, setShowText] = useState(false);
+
+  useEffect(() => {
+    setShowText(false);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.contentDescription}>
         <h2>Descrição</h2>
 
         {!!product?.volumeInfo?.description ? (
-          <p>
-            {product?.volumeInfo?.description}
-          </p>
+          <>
+            <p className={isShowText && styles.showActive}>
+              {product?.volumeInfo?.description}
+            </p>
+
+            <button 
+              className={styles.buttonShowText}
+              onClick={() => setShowText(!isShowText)}
+            >
+              {isShowText ? (
+                <>
+                  Ler Menos
+                  <FiChevronUp />
+                </> 
+              ) : ( 
+                <>
+                  Ler Mais
+                  <FiChevronDown />
+                </>
+              )}
+            </button>
+          </>
         ): (
           <p>
             Sem Descrição...

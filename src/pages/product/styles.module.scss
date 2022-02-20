@@ -1,5 +1,10 @@
 .container {
   width: 100%;
+  padding-bottom: 16px; 
+  
+  @media (max-width: 768px) {
+    padding-bottom: calc(90px + 16px); 
+  }
 
   .contentProductInfo {
     width: 100%;
@@ -9,25 +14,55 @@
     align-items: flex-start;
     margin-top: 60px;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin-top: 24px;
+    }
+
     .contentImage {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
 
+      @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 32px;
+      }
+
       .productImage {
         width: 100%;
         max-width: 280px;
+
+        @media (max-width: 768px) {
+          max-width: 180px;
+        }
       }
     }
     .contentInfo {
       width: 100%;
       max-width: 400px;
+      position: relative;
+
+      .separator {
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
 
       .contentButtons {
         width: 100%;
         display: flex;
         align-items: center;
+
+        @media (max-width: 768px) {
+          height: 90px;
+          background: #ffffff;
+          position: fixed;
+          padding: 0 16px;
+          bottom: 0;
+          left: 0;
+        }
 
         .accumulator {
           width: 100%;
@@ -38,6 +73,10 @@
           justify-content: space-around;
           border: 1px solid var(--gray-800);
           margin-right: 8px;
+
+          @media (max-width: 768px) {
+            margin-right: 16px;
+          }
 
           .remove, .add {
             height: 100%;

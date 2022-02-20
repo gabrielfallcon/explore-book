@@ -11,6 +11,10 @@
     > h1 {
       font-size: 18px;
       color: var(--gray-800);
+
+      @media (max-width: 768px) {
+        max-width: 260px;
+      }
     }
     .wishList {
       cursor: pointer;
@@ -36,10 +40,18 @@
   .contentInfoPrice {
     margin: 40px 0 16px;
 
+    @media (max-width: 768px) {
+      margin: 16px 0;
+    }
+
     span {
       font-size: 24px;
       color: var(--gray-800);
       font-weight: 600;
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
     }
   }
 }

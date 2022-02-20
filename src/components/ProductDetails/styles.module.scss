@@ -1,6 +1,11 @@
 .container {
   .contentDescription {
     margin-top: 80px;
+
+    @media (max-width: 768px) {
+      margin-top: 24px;
+    }
+
     h2 {
       color: var(--gray-800);
       margin-bottom: 16px;
@@ -8,8 +13,33 @@
     p {
       width: 100%;      
       max-width: 800px;
+      height: 100px;
+      overflow-y: hidden;
       padding-left: 16px;
       color: var(--gray-800);
+      transition: .5s;
+
+      &.showActive {
+        height: fit-content;
+      }
+    }
+    .buttonShowText {
+      width: 100%;
+      max-width: 120px;
+      display: none;
+      height: 40px;
+      background: transparent;
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      gap: 0 8px;
+      font-size: 16px;
+      font-weight: bolder;
+      color: var(--gray-800);
+
+      @media (max-width: 768px) {
+        display: flex;
+      }
     }
   }
   .contentDetails {

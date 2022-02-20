@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { ResultItem } from '../components/ResultItem';
 import { api } from '../services/api';
 import styles from '../styles/styles.module.scss';
 import Link from 'next/link';

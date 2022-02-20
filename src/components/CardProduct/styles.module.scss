@@ -1,38 +1,44 @@
 .productCard {
   width: 200px;
-  padding-bottom: 16px;
+  padding: 16px;
   border-radius: 6px;
   background: var(--salmon-100);
   box-shadow: rgb(68 68 68 / 20%) 0px -18px 35px;
+
+  @media (max-width: 768px) {
+    width: 150px;
+  }
   
   .imageCard {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding-bottom: 16px;
 
     img {
       width: 100%;
       max-width: 150px;
       height: 220px;
+
+      @media (max-width: 768px) {
+        height: 175px;
+      }
     }
   }
   .titleCard {
+    max-width: 14ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 16px;
+    white-space: nowrap;
     color: var(--gray-800);
     text-align: center;
     font-weight: 400;
-  }
-  .descriptionCard {
-    font-size: 10px;
-    color: var(--gray-600);
-    letter-spacing: 0.02em;
-    text-align: center;
-    margin-top: 16px;
-    
-    span {
-      font-weight: bold;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
     }
   }
 }
