@@ -1,12 +1,13 @@
 import { createContext, ReactNode, useState } from 'react';
 
+
 interface WishListProviderProps {
   children: ReactNode
 }
 
 interface WishListContextData {
-  dataWish: Array<Array<Object>>;
-  addToWishList: (data: Array<Object>, id: string) => void;
+  dataWish: Object[];
+  addToWishList: (data: Object[], id: string) => void;
   removeToWishList: (id: string) => void;
 }
 

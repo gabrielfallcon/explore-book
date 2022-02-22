@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { api } from 'services/api';
+import { ProductInfo } from 'components/ProductInfo';
+import { ProductDetails } from 'components/ProductDetails';
 import { FiMinus, FiPlus } from 'react-icons/fi';
-import { ProductDetails } from '../../components/ProductDetails';
-import { ProductInfo } from '../../components/ProductInfo';
-import { api } from '../../services/api';
 import styles from './styles.module.scss';
 
 export default function Product() {
@@ -62,7 +62,7 @@ export default function Product() {
       </section>
     
       <section className={styles.contentProductDetails}>
-        <ProductDetails product={dataProduct}/>
+        <ProductDetails product={dataProduct} />
       </section>
     </main>
   )

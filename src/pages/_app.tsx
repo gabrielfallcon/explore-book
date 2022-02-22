@@ -1,6 +1,6 @@
-import { Header } from '../components/Header';
+import { Header } from 'components/Header';
+import { WishListProvider } from 'context/WishListContext';
 import '../styles/global.scss';
-import { WishListProvider } from '../context/WishListContext';
 
 function MyApp({ Component, pageProps }) {
   return (

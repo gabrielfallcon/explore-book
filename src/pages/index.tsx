@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
-import { api } from '../services/api';
-import styles from '../styles/styles.module.scss';
+import { api } from 'services/api';
 import Link from 'next/link';
-import { CardProduct } from '../components/CardProduct';
+import { CardProduct } from 'components/CardProduct';
+import { FiSearch } from 'react-icons/fi';
+import styles from '../styles/styles.module.scss';
 
 export default function Home() {
   const [dataBook, setDataBook] = useState([]);

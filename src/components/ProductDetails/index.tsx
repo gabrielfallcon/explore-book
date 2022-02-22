@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import styles from './styles.module.scss';
+import { DataProps } from 'types/Product';
 
-interface ProductDetailsProps {
-  product: any;
-}
-
-export const ProductDetails = ({ product }: ProductDetailsProps) => {
+export const ProductDetails = ({ ...props }: DataProps) => {
   const [isShowText, setShowText] = useState(false);
 
   useEffect(() => {
@@ -18,10 +15,10 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
       <div className={styles.contentDescription}>
         <h2>Descrição</h2>
 
-        {!!product?.volumeInfo?.description ? (
+        {!!props?.product?.volumeInfo?.description ? (
           <>
             <p className={isShowText && styles.showActive}>
-              {product?.volumeInfo?.description}
+              {props?.product?.volumeInfo?.description}
             </p>
 
             <button 
@@ -54,11 +51,11 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         <h2>Detalhes do produto</h2>
 
         <p>
-          <span>Editora:</span> {product?.volumeInfo?.publisher}
+          <span>Editora:</span> {props?.product?.volumeInfo?.publisher}
         </p>
-        {!!product?.volumeInfo?.authors ? (
+        {!!props?.product?.volumeInfo?.authors ? (
           <p>
-            <span>Autor:</span> {product?.volumeInfo?.authors[0]}
+            <span>Autor:</span> {props?.product?.volumeInfo?.authors[0]}
           </p>
         ): (
           <p>
@@ -66,10 +63,10 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
           </p>
         )}
         <p>
-          <span>Capa comum:</span> {product?.volumeInfo?.pageCount} páginas
+          <span>Capa comum:</span> {props?.product?.volumeInfo?.pageCount} páginas
         </p>
         <p>
-          <span>Publicado em:</span> {product?.volumeInfo?.publishedDate}
+          <span>Publicado em:</span> {props?.product?.volumeInfo?.publishedDate}
         </p>
       </div>
     </div>

@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { WishListContext } from '../../context/WishListContext';
+import { WishListContext } from 'context/WishListContext';
 import Link from 'next/link';
-import { CardProduct } from '../../components/CardProduct';
+import { CardProduct } from 'components/CardProduct';
 import styles from './styles.module.scss';
 
 export default function WishList() {
   const { dataWish } = useContext(WishListContext);
-  console.log(dataWish);
+  
   return (
     dataWish.length ? (
       <main className={styles.container}>
@@ -17,7 +17,6 @@ export default function WishList() {
 
           <div className={styles.contentListResult}>
             {dataWish.map((book: any) => {
-              console.log('caiu aqui');
               return (
                 <Link href={`/product/${book.id}`} key={book.id}>
                   <a>

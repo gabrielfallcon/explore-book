@@ -1,20 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { FiHeart } from 'react-icons/fi';
-import { FaHeart } from 'react-icons/fa';
-import styles from './styles.module.scss';
+import { convertPrice } from 'utils/convertPrice';
+import { WishListContext } from 'context/WishListContext';
+import { DataProps } from 'types/Product';
 import ReactStars from 'react-rating-stars-component';
-import { WishListContext } from '../../context/WishListContext';
+import { FaHeart } from 'react-icons/fa';
+import { FiHeart } from 'react-icons/fi';
+import styles from './styles.module.scss';
 
 interface ProductInfoProps {
   product: any;
 }
 
-export function ProductInfo({ product }: ProductInfoProps) {
+export function ProductInfo({ ...props }: DataProps) {
   const { dataWish, removeToWishList, addToWishList } = useContext(WishListContext);
-
   const [isActiveWishList, setWishiList] = useState(false);
 
-  
   const handleAddWishList = (data, id) => {
     setWishiList(!isActiveWishList);
     addToWishList(data, id);
@@ -25,45 +25,41 @@ export function ProductInfo({ product }: ProductInfoProps) {
     removeToWishList(id);
   }
 
-  const convertPrice = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(product?.saleInfo?.retailPrice?.amount);
-
+  const convertAmount = convertPrice(props?.product?.saleInfo?.retailPrice?.amount);
   
   useEffect(() => {
     const isValidId = dataWish.findIndex((item: any) => {
-      if (item?.id === product.id) {
+      if (item?.id === props?.product.id) {
         return setWishiList(true)
       };
     })
-  }, [product]);
+  }, [props?.product]);
   return (
     <div className={styles.contentInfoProduct}>
       <div className={styles.contentTitle}>
-        <h1>{product?.volumeInfo?.title}</h1> 
+        <h1>{props?.product?.volumeInfo?.title}</h1> 
 
         {isActiveWishList ? (
           <FaHeart 
             className={styles.wishList}
-            onClick={() => handleRemoveWishList(product.id)}
+            onClick={() => handleRemoveWishList(props?.product.id)}
             color="red"
             size={20}
           />
         ) : (
           <FiHeart 
             className={styles.wishList}
-            onClick={() => handleAddWishList(product, product.id)}
+            onClick={() => handleAddWishList(props?.product, props?.product.id)}
             color='#191919'
             size={20} 
           />
         )}
       </div>
-      {!!product?.volumeInfo?.authors && (
+      {!!props?.product?.volumeInfo?.authors && (
         <div className={styles.contentSeller}>
           <p> 
             autor:
-            <span> {product?.volumeInfo?.authors[0]}</span>
+            <span> {props?.product?.volumeInfo?.authors[0]}</span>
           </p> 
 
           <ReactStars 
@@ -74,8 +70,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
         </div>
       )}
       <div className={styles.contentInfoPrice}>
-        {!!product?.saleInfo?.retailPrice?.amount ? (
-          <span>{convertPrice}</span> 
+        {!!props?.product?.saleInfo?.retailPrice?.amount ? (
+          <span>{convertAmount}</span> 
         ): (
           <span>Preço indisponível momento</span>
         )}

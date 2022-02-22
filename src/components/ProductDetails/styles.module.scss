@@ -13,14 +13,17 @@
     p {
       width: 100%;      
       max-width: 800px;
-      height: 100px;
-      overflow-y: hidden;
       padding-left: 16px;
       color: var(--gray-800);
       transition: .5s;
 
-      &.showActive {
-        height: fit-content;
+      @media (max-width: 768px) {
+        height: 100px;
+        overflow-y: hidden;
+
+        &.showActive {
+          height: fit-content;
+        }
       }
     }
     .buttonShowText {
