@@ -1,14 +1,27 @@
 import { useState } from 'react';
 import { api } from 'services/api';
-import Link from 'next/link';
-import { CardProduct } from 'components/CardProduct';
+import { Paginator } from 'components/Paginator';
 import { FiSearch } from 'react-icons/fi';
 import styles from '../styles/styles.module.scss';
 
 export default function Home() {
   const [dataBook, setDataBook] = useState([]);
 
-  
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const booksPerPage = 10;
+  const pagesVisited = pageNumber * booksPerPage;
+
+  const displayBooks = dataBook.slice(pagesVisited, pagesVisited + booksPerPage);
+
+  const pageCount = Math.ceil(dataBook.length / booksPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  }
+
+  console.log('current', displayBooks);
+
   const requestData = async (e) => {
     e.preventDefault();
     
@@ -25,7 +38,6 @@ export default function Home() {
     const { items } = response.data;
 
     setDataBook(items);
-   
   }
 
   return (
@@ -43,18 +55,10 @@ export default function Home() {
         </div>
 
         <div className={styles.boxListResult}>
-
-          {!!dataBook?.length && (
-              <div className={styles.boxListResult}>
-                {dataBook.map(item => (
-                  <Link href={`/product/${item.id}`} key={item.id}>
-                    <a>
-                      <CardProduct product={item}/>
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            )}
+          <Paginator 
+            booksPerPage={10}
+            dataBook={dataBook}
+          />
         </div>
       </section>
     </main>
