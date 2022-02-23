@@ -1,15 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { convertPrice } from 'utils/convertPrice';
 import { WishListContext } from 'context/WishListContext';
+import { WishButton } from 'components/WishButton';
 import { DataProps } from 'types/Product';
 import ReactStars from 'react-rating-stars-component';
-import { FaHeart } from 'react-icons/fa';
-import { FiHeart } from 'react-icons/fi';
 import styles from './styles.module.scss';
-
-interface ProductInfoProps {
-  product: any;
-}
 
 export function ProductInfo({ ...props }: DataProps) {
   const { dataWish, removeToWishList, addToWishList } = useContext(WishListContext);
@@ -39,21 +34,13 @@ export function ProductInfo({ ...props }: DataProps) {
       <div className={styles.contentTitle}>
         <h1>{props?.product?.volumeInfo?.title}</h1> 
 
-        {isActiveWishList ? (
-          <FaHeart 
-            className={styles.wishList}
-            onClick={() => handleRemoveWishList(props?.product.id)}
-            color="red"
-            size={20}
-          />
-        ) : (
-          <FiHeart 
-            className={styles.wishList}
-            onClick={() => handleAddWishList(props?.product, props?.product.id)}
-            color='#191919'
-            size={20} 
-          />
-        )}
+        <WishButton 
+          isActive={isActiveWishList}
+          handleRemove={() => handleRemoveWishList(props?.product.id)}
+          handleAdd={() => handleAddWishList(props?.product, props?.product.id)}
+          id={props?.product.id}
+          product={props?.product}
+        />
       </div>
       {!!props?.product?.volumeInfo?.authors && (
         <div className={styles.contentSeller}>

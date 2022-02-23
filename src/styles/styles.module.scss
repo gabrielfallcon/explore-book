@@ -48,7 +48,7 @@
         font-style: italic;
       }
     }
-    .contentIniput {
+    .contentInput {
       width: 100%;
       max-width: 500px;
       height: 60px;
@@ -58,7 +58,7 @@
       align-items: center;
       padding: 0 24px;
       position: relative;
-
+    
       input {
         background: transparent;
         border: 0;
@@ -67,7 +67,7 @@
         font-style: 14px;
         color: var(--gray-600);
         outline: 0;
-
+    
         &::placeholder {
           color: var(--gray-200);
           font-style: 14px;
@@ -77,6 +77,5 @@
         cursor: pointer;
       }
     }
-    
   }
 }

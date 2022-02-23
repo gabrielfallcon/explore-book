@@ -7,21 +7,6 @@ import styles from '../styles/styles.module.scss';
 export default function Home() {
   const [dataBook, setDataBook] = useState([]);
 
-  const [pageNumber, setPageNumber] = useState(0);
-
-  const booksPerPage = 10;
-  const pagesVisited = pageNumber * booksPerPage;
-
-  const displayBooks = dataBook.slice(pagesVisited, pagesVisited + booksPerPage);
-
-  const pageCount = Math.ceil(dataBook.length / booksPerPage);
-
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  }
-
-  console.log('current', displayBooks);
-
   const requestData = async (e) => {
     e.preventDefault();
     
@@ -29,7 +14,6 @@ export default function Home() {
     
     if (!value) {
       setDataBook([]);
-
       return;
     } 
 
@@ -46,7 +30,7 @@ export default function Home() {
         <h2 className={styles.subTitle}>Pesquise por um livro</h2>
         <h1 className={styles.title}>Aqui na <span>Explore Book</span> você encontra seus livros!</h1>
 
-        <div className={styles.contentIniput}>
+        <div className={styles.contentInput}>
           <input 
             onChange={requestData}
             placeholder="Pesquise o nome do livro" 
