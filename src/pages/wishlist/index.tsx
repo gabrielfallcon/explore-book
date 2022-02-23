@@ -3,6 +3,7 @@ import { WishListContext } from 'context/WishListContext';
 import Link from 'next/link';
 import { CardProduct } from 'components/CardProduct';
 import styles from './styles.module.scss';
+import { MessageError } from 'components/MessageError';
 
 export default function WishList() {
   const { dataWish } = useContext(WishListContext);
@@ -29,9 +30,7 @@ export default function WishList() {
         </section>
       </main>
     ): (
-      <p>
-        Você não tem produtos em sua lista :/
-      </p>
+      <MessageError title="Você não tem livros em sua lista de favoritos 📚" />
     )
   )
 }

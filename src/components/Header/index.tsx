@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import styles from './styles.module.scss';
+import { useRouter } from 'next/router';
 
 export function Header() {
+  const { asPath } = useRouter();
+
   return (
     <header className={styles.containerHeader}>
       <Link href='/'>
@@ -15,10 +18,14 @@ export function Header() {
       
       <nav className={styles.contentNav}>
         <Link href="/">
-          <a>Início</a>
+          <a className={asPath === '/' && styles.active}>
+            Início
+          </a>
         </Link>
         <Link href="/wishlist">
-          <a>Meus Favoritos</a>
+          <a className={asPath === '/wishlist' && styles.active}>
+            Meus Favoritos
+          </a>
         </Link>
       </nav>
     </header>
